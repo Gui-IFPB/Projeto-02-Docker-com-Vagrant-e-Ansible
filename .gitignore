@@ -1,0 +1,6 @@
+.vagrant/
+*.log
+*.pid
+__pycache__/
+*.pyc
+node_modules/

@@ -1,0 +1,54 @@
+version: "2.4"
+
+services:
+  database:
+    image: mysql:5.7
+    container_name: database
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - my:/var/lib/mysql
+    networks:
+      - wordpress
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      retries: 10
+      start_period: 30s
+
+  webserver:
+    image: wordpress:latest
+    container_name: webserver
+    environment:
+      WORDPRESS_DB_HOST: database:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - app:/var/www/html
+    networks:
+      - wordpress
+    depends_on:
+      database:
+        condition: service_healthy
+
+  webproxy:
+    image: guiifpb/nginx-lb:latest
+    container_name: webproxy
+    ports:
+      - "8080:8080"
+    networks:
+      - wordpress
+    depends_on:
+      - webserver
+
+volumes:
+  app:
+  my:
+
+networks:
+  wordpress:
+

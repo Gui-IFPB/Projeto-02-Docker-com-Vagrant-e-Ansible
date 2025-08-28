@@ -1,0 +1,65 @@
+---
+- name: Provisionar VM e configurar aplicação WordPress
+  hosts: all
+  become: true
+
+  tasks:
+
+    - name: Atualizar pacotes do sistema
+      apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: Instalar pacotes necessários
+      apt:
+        name:
+          - curl
+          - python3
+          - python3-pip
+          - apt-transport-https
+          - ca-certificates
+          - gnupg
+          - lsb-release
+          - docker.io
+          - docker-compose
+        state: present
+
+    - name: Adicionar usuário vagrant ao grupo docker
+      user:
+        name: vagrant
+        groups: docker
+        append: yes
+
+    - name: Reiniciar serviço Docker para aplicar mudanças de grupo
+      service:
+        name: docker
+        state: restarted
+
+    - name: Criar volumes Docker explicitamente
+      docker_volume:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - app
+        - my
+
+    - name: Copiar docker-compose.yml para /home/vagrant
+      copy:
+        src: ./docker-compose.yml
+        dest: /home/vagrant/docker-compose.yml
+        owner: vagrant
+        group: vagrant
+        mode: '0644'
+
+    - name: Criar rede Docker 'wordpress' (se não existir)
+      community.docker.docker_network:
+        name: wordpress
+        state: present
+        driver: bridge
+
+    - name: Subir containers do WordPress via docker-compose
+      community.docker.docker_compose:
+        project_src: /home/vagrant
+        state: present
+        restarted: true
+
