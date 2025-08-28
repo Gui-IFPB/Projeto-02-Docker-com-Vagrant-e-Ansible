@@ -1,6 +1,14 @@
+# Pastas do Vagrant
 .vagrant/
+
+# Logs e temporários
 *.log
-*.pid
-__pycache__/
-*.pyc
-node_modules/
+*.tmp
+*.bak
+*.swp
+
+# Docker volumes e imagens
+app/
+my/
+*.tar
+
