@@ -22,7 +22,8 @@ Projeto-02-Docker-com-Vagrant-e-Ansible/
 │── docker/  
 │   ├── Dockerfile
 │   ├── nginx.conf               
-│── README.md               
+│── README.md
+             
 
 `
 
