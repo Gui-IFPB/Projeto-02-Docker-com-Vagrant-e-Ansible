@@ -15,21 +15,17 @@ O provisionamento automatiza:
 
 
 Projeto-02-Docker-com-Vagrant-e-Ansible/
+- Vagrantfile               # Arquivo principal para provisionar a VM
+- README.md                 # Documentação do projeto
 
-│── Vagrantfile              
-│── ansible/ 
-   
-   ├── docker-compose.yml
-   
-   ├── playbook_ansible.yml
-│── docker/  
-   
-   ├── Dockerfile
-   
-   ├── nginx.conf               
+ansible/
+- docker-compose.yml        # Define os serviços Docker (WordPress, MySQL e Nginx)
+- playbook_ansible.yml      # Playbook Ansible que realiza a instalação e configuração automática
 
-│── README.md
-             
+docker/
+- Dockerfile                # Imagem Docker personalizada 
+- nginx.conf                # Configuração do Nginx (proxy reverso, balanceamento de carga)
+
 
 `
 
