@@ -34,14 +34,14 @@ docker/
 ## Passo a Passo de Execução
 
 1. Clone este repositório:
-   bash
+   
    git clone https://github.com/Gui-IFPB/Projeto-02-Docker-com-Vagrant-e-Ansible.git
    cd Projeto-02-Docker-com-Vagrant-e-Ansible
 `
 
 2. Suba a máquina virtual com o Vagrant:
 
-   bash
+   
    vagrant up
    
 
@@ -59,7 +59,6 @@ docker/
 
 Para realizar os testes, basta executar o comando abaixo para garantir que a VM está ativa:
 
-bash
 vagrant ssh hostname -f
 
 
