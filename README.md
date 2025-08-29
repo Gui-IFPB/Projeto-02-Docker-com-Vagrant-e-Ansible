@@ -18,11 +18,16 @@ Projeto-02-Docker-com-Vagrant-e-Ansible/
 
 │── Vagrantfile              
 │── ansible/ 
+   
    ├── docker-compose.yml
+   
    ├── playbook_ansible.yml
 │── docker/  
+   
    ├── Dockerfile
+   
    ├── nginx.conf               
+
 │── README.md
              
 
