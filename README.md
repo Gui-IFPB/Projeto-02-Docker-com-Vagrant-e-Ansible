@@ -15,6 +15,7 @@ O provisionamento automatiza:
 
 
 Projeto-02-Docker-com-Vagrant-e-Ansible/
+
 │── Vagrantfile              
 │── ansible/ 
 │   ├── docker-compose.yml
