@@ -36,18 +36,20 @@ docker/
 1. Clone este repositório:
    
    git clone https://github.com/Gui-IFPB/Projeto-02-Docker-com-Vagrant-e-Ansible.git
+
+
    cd Projeto-02-Docker-com-Vagrant-e-Ansible
 `
 
-2. Suba a máquina virtual com o Vagrant:
+3. Suba a máquina virtual com o Vagrant:
 
    
    vagrant up
    
 
-3. Aguarde a conclusão do **provisionamento automático** realizado pelo Ansible.
+4. Aguarde a conclusão do **provisionamento automático** realizado pelo Ansible.
 
-4. Ao finalizar, a aplicação WordPress estará disponível no navegador em:
+5. Ao finalizar, a aplicação WordPress estará disponível no navegador em:
 
    
    http://192.168.56.162:8080
